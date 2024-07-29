@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CODEBASE_NAME=flowable-engine
+SOURCE_PATH=~/$CODEBASE_NAME
 
 set_env_variables() {
     if [ -f .env ]; then
@@ -42,21 +43,21 @@ start_postgresql() {
 start_server() {
   # Start Flowable UI app
 
-  #cd ~/$CODEBASE_NAME/flowable-engine-flowable-6.8.1/modules/flowable-ui/flowable-ui-app
+  #cd $SOURCE_PATH/modules/flowable-ui/flowable-ui-app
   #
   ## Start nohup process
-  #nohup mvn spring-boot:run > ~/$CODEBASE_NAME/output_ui.log 2>&1 &
-  #echo $! > ~/$CODEBASE_NAME/save_ui_pid.txt
+  #nohup mvn spring-boot:run > $SOURCE_PATH/output_ui.log 2>&1 &
+  #echo $! > $SOURCE_PATH/save_ui_pid.txt
   #
   #echo "Started Flowable UI"
 
-  cd ~/$CODEBASE_NAME/modules/flowable-app-rest || exit
+  cd $SOURCE_PATH/modules/flowable-app-rest || exit
 
   # Start nohup process for running maven in daemon
-  nohup mvn spring-boot:run > ~/$CODEBASE_NAME/output_rest.log 2>&1 &
-  echo $! > ~/$CODEBASE_NAME/save_rest_pid.txt
+  nohup mvn spring-boot:run > $SOURCE_PATH/output_rest.log 2>&1 &
+  echo $! > $SOURCE_PATH/save_rest_pid.txt
 
-  echo "Started Flowable REST" ~/$CODEBASE_NAME/output_rest.log
+  echo "Started Flowable REST" $SOURCE_PATH/output_rest.log
 
   tail -n 100 -f
 }
