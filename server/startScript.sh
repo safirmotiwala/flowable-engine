@@ -64,7 +64,7 @@ start_server() {
   tail -n 100 -f $SOURCE_PATH/output_rest.log
 }
 
-set_env_variables
+#set_env_variables
 start_postgresql
 echo "Waiting for dependencies to start..."
 sleep 5
