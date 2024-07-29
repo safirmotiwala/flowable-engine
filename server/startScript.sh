@@ -59,7 +59,9 @@ start_server() {
 
   echo "Started Flowable REST" $SOURCE_PATH/output_rest.log
 
-  tail -n 100 -f
+  sleep 2
+
+  tail -n 100 -f $SOURCE_PATH/output_rest.log
 }
 
 set_env_variables
