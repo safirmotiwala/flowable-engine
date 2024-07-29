@@ -50,13 +50,15 @@ start_server() {
   #
   #echo "Started Flowable UI"
 
-  cd ~/$CODEBASE_NAME/flowable-engine-flowable-6.8.1/modules/flowable-app-rest || exit
+  cd ~/$CODEBASE_NAME/modules/flowable-app-rest || exit
 
   # Start nohup process for running maven in daemon
   nohup mvn spring-boot:run > ~/$CODEBASE_NAME/output_rest.log 2>&1 &
   echo $! > ~/$CODEBASE_NAME/save_rest_pid.txt
 
-  echo "Started Flowable REST"
+  echo "Started Flowable REST" ~/$CODEBASE_NAME/output_rest.log
+
+  tail -n 100 -f
 }
 
 set_env_variables

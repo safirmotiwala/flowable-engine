@@ -1,3 +1,7 @@
+CODEBASE_NAME=flowable-engine
+
+cd ~/$CODEBASE_NAME/modules/flowable-app-rest
+
 #kill -9 $(cat save_ui_pid.txt)
 kill -9 $(cat save_rest_pid.txt)
 #rm save_ui_pid.txt
